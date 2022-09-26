@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject powerUpPrefab;
 
     private int enemyCount;
     private int waveNumber = 1;
@@ -14,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         SpawnEnemyWave(waveNumber);
+        Instantiate(powerUpPrefab, GeneratePosition(), powerUpPrefab.transform.rotation);
     }
 
     private void Update()
@@ -23,6 +25,7 @@ public class SpawnManager : MonoBehaviour
         {
             waveNumber++;
             SpawnEnemyWave(waveNumber);
+            Instantiate(powerUpPrefab, GeneratePosition(), powerUpPrefab.transform.rotation);
         }
     }
 
